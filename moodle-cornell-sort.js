@@ -2,7 +2,7 @@
 // @name        Cornell Moodle Class Sort
 // @description This is your new file, start writing code
 // @match       https://moodle.cornellcollege.edu/*
-// @version     0.1.0
+// @version     0.1.1
 // @updateURL   https://raw.githubusercontent.com/totallynotmark6/Userscripts/main/moodle-cornell-sort.js
 // ==/UserScript==
 
@@ -27,6 +27,11 @@ function messWithSidebar() {
         const bText = b.textContent.trim()
         const aBlock = Number(aText[7])
         const bBlock = Number(bText[7])
+        const aYear = Number(aText.split(" ")[1])
+        const bYear = Number(bText.split(" ")[1])
+        if (aYear !== bYear) {
+            return aYear > bYear;
+        }
         return aBlock > bBlock;
     })
     for (let i = 0; i < savedButtons.length; i++) {
@@ -35,5 +40,10 @@ function messWithSidebar() {
     }
     console.log(savedButtons)
 }
+
+function messWithHomepage() {}
+
+function messWithDashboard() {}
+
 
 messWithSidebar()
